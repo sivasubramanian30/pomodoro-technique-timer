@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Include Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="mode-pomodoro">
+    <div class="app-container">
+        <header>
+            <h1><i class="fa-solid fa-clock"></i> Pomodoro</h1>
+            <div class="header-controls">
+                <button id="theme-btn" class="icon-btn" aria-label="Toggle Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <button id="settings-btn" class="icon-btn" aria-label="Settings">
+                    <i class="fa-solid fa-gear"></i>
+                </button>
+            </div>
+        </header>
+
+        <div class="mode-selector">
+            <button class="mode-btn active" data-mode="pomodoro">Pomodoro</button>
+            <button class="mode-btn" data-mode="shortBreak">Short Break</button>
+            <button class="mode-btn" data-mode="longBreak">Long Break</button>
+        </div>
+
+        <div class="timer-display">
+            <span id="time-left">25:00</span>
+        </div>
+
+        <div class="controls">
+            <button id="start-btn" class="control-btn primary">Start</button>
+            <button id="pause-btn" class="control-btn secondary" style="display: none;">Pause</button>
+            <div class="side-controls">
+                <button id="reset-btn" class="control-btn icon-btn" aria-label="Reset">
+                    <i class="fa-solid fa-rotate-right"></i>
+                </button>
+                <button id="next-btn" class="control-btn icon-btn" aria-label="Next">
+                    <i class="fa-solid fa-forward-step"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Timer Settings</h2>
+                <button id="close-settings" class="icon-btn" aria-label="Close settings">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            
+            <div class="settings-form">
+                <div class="setting-group">
+                    <label for="pomodoro-time">Pomodoro</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="pomodoro-time" value="25" min="1" max="90">
+                        <span>min</span>
+                    </div>
+                </div>
+                
+                <div class="setting-group">
+                    <label for="short-break-time">Short Break</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="short-break-time" value="5" min="1" max="30">
+                        <span>min</span>
+                    </div>
+                </div>
+                
+                <div class="setting-group">
+                    <label for="long-break-time">Long Break</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="long-break-time" value="15" min="1" max="60">
+                        <span>min</span>
+                    </div>
+                </div>
+                
+                <button id="save-settings" class="save-btn">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Sound -->
+    <audio id="alarm-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-alarm-digital-clock-beep-989.mp3" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
